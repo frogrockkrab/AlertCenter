@@ -1,9 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="chaya.non.alertcenter.Main2Activity">
+    tools:context="chaya.non.alertcenter.Register">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/register"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginStart="45dp" />
+    <EditText
+        android:id="@+id/editfname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_marginLeft="60dp"
+        android:hint="@string/first_name"
+        android:ems="6"
+        android:inputType="textPersonName"
+        android:layout_marginStart="60dp" />
+
+    <EditText
+        android:id="@+id/editlname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/editfname"
+        android:layout_toEndOf="@+id/editfname"
+        android:layout_toRightOf="@+id/editfname"
+        android:hint="@string/last_name"
+        android:ems="6"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editemail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editfname"
+        android:layout_alignLeft="@id/editfname"
+        android:ems="12"
+        android:hint="@string/e_mail"
+        android:inputType="textEmailAddress"
+        android:layout_alignStart="@id/editfname" />
+
+    <EditText
+        android:id="@+id/editpass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/editfname"
+        android:layout_below="@id/editemail"
+        android:ems="12"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:layout_alignStart="@id/editfname" />
+
+    <TextView
+        android:id="@+id/txtdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/button"
+        android:layout_alignLeft="@+id/editfname"
+        android:layout_alignStart="@+id/editfname"
+        android:text="@string/birth_date"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txtday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/txtdate"
+        android:layout_toRightOf="@+id/txtdate"
+        android:layout_alignBaseline="@id/button"
+        android:layout_marginLeft="10dp"
+        android:textSize="18sp"
+        android:layout_marginStart="10dp"
+        android:hint="@string/date_fomat"/>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editpass"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@+id/txtday"
+        android:layout_toRightOf="@+id/txtday"
+        android:text="@string/select" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="@string/submit" />
+
+
+</RelativeLayout>
