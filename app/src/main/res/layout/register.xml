@@ -3,7 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="chaya.non.alertcenter.Register">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="?attr/colorPrimary"
+        android:elevation="6dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
     <TextView
         android:id="@+id/title"
@@ -14,7 +26,8 @@
         android:textStyle="bold"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="45dp"
-        android:layout_marginStart="45dp" />
+        android:layout_marginStart="45dp"
+        android:layout_below="@id/toolbar"/>
     <EditText
         android:id="@+id/editfname"
         android:layout_width="wrap_content"

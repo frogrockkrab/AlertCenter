@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -38,7 +39,7 @@ public class Register extends AppCompatActivity {
 
     private String firstname,lastname,email,password;
 
-    private static final String url = "http://192.168.0.101/AlertCenter/AddMemberData.php";
+    private static final String url = "http://192.168.0.102/AlertCenter/AddMemberData.php";
 
     static final int DATE_DIALOG_ID = 0;
     static final int PICKER_MODE = 1;
@@ -47,6 +48,9 @@ public class Register extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         txtT1 = (TextView) findViewById(R.id.txtday);
 
@@ -76,8 +80,6 @@ public class Register extends AppCompatActivity {
         mMonth = c.get(Calendar.MONTH);
         mDay = c.get(Calendar.DAY_OF_MONTH);
 
-        // display the current date
-        //updateCurrentDate();
     }
 
     private void onEditText() {
