@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         btnLogin = (Button)findViewById(R.id.btnLogin);
         txt1 = (TextView)findViewById(R.id.user);
         home = new Intent(this,Home.class);
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 submit();
@@ -59,7 +60,16 @@ public class MainActivity extends AppCompatActivity {
         editor = pref.edit();
         str = pref.getString("user","noreccrd");
         txt1.setText(str);
+        checkPref();
     }
+
+    private void checkPref() {
+        if(str != "noreccrd"){
+            startActivity(home);
+            finish();
+        }
+    }
+
     public void Register(View view) {
         Intent regis = new Intent(this,Register.class);
         startActivity(regis);
@@ -76,16 +86,15 @@ public class MainActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        //Toast.makeText(MainActivity.this, "Login success ", Toast.LENGTH_SHORT).show();
                         pDialog.hide();
-                        //startActivity(home);
-                        //finish();
                         try{
                             JSONObject object = new JSONObject(response);
                             returnCode = object.getInt("code");
                             returnMsg = object.getString("return");
                             if (returnCode == 1){
                                 sharedPref();
+                                startActivity(home);
+                                finish();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -115,7 +124,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void sharedPref() {
         Toast.makeText(MainActivity.this, "Error Response "+returnMsg, Toast.LENGTH_SHORT).show();
-
         editor = editor.putString("user",returnMsg);
         editor.commit();
     }
