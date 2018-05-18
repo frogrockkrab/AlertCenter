@@ -23,7 +23,7 @@ public class Feed extends Fragment {
     Feed_Adapter feed_adapter;
     RecyclerView recyclerView;
     List<Data> data = new ArrayList<>();
-
+    //EndlessRecyclerViewScrollListener scrollListener;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.recycleview,container,false);
@@ -33,6 +33,7 @@ public class Feed extends Fragment {
         feed_adapter = new Feed_Adapter(data);
         getData();
         recyclerView.setAdapter(feed_adapter);
+
         /*ListView lv = (ListView)rootView.findViewById(R.id.listview);
         String[] clubList = {"Arsenal", "Chelsea", "Everton","Liverpool", "Man City", "Man Utd", "Spurs" };
         ArrayAdapter<String> a = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,clubList);
@@ -42,7 +43,7 @@ public class Feed extends Fragment {
 
     private void getData() {
         data.add(new Data("title 1", "descrip 1" , R.mipmap.ic_launcher));
-        for (int i = 2;i<10;i++) {
+        for (int i = 2;i<1000;i++) {
             data.add(new Data("title "+ Integer.toString(i), "descrip "+ Integer.toString(i), R.mipmap.ic_launcher));
         }
     }

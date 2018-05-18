@@ -34,7 +34,8 @@ public class Feed_Adapter extends RecyclerView.Adapter<Feed_Adapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return mDataset.size();
+        //return mDataset.size();
+        return 10;
     }
 
     public  void setOnitemClickListener(MyClicklistener mCallback){
@@ -66,5 +67,8 @@ public class Feed_Adapter extends RecyclerView.Adapter<Feed_Adapter.ViewHolder> 
         public void onClick(View view) {
             mCallback.onitemClick(getAdapterPosition(),view);
         }
+
+
     }
+
 }
