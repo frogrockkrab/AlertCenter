@@ -33,65 +33,35 @@
         />
 
 
-
-    <LinearLayout
-        android:id="@+id/layout1"
+    <EditText
+        android:id="@+id/edtUN"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_below="@+id/tvTitle"
-        android:layout_centerHorizontal="true">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/tvTitle"
+        android:ems="10"
+        android:hint="E-mail"
+        android:inputType="textEmailAddress" />
 
-        <TextView
-            android:id="@+id/tvUsername"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="Username" />
-
-        <EditText
-            android:id="@+id/edtUN"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-
-
-            android:ems="10"
-            android:hint="E-mail"
-            android:inputType="textEmailAddress" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layout2"
+    <EditText
+        android:id="@+id/edtPW"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_below="@+id/layout1"
-        android:layout_centerHorizontal="true">
-        <TextView
-            android:id="@+id/tvPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="Password" />
-
-
-        <EditText
-            android:id="@+id/edtPW"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvUsername"
-            android:layout_marginLeft="20dp"
-
-            android:ems="10"
-            android:hint="Pass"
-            android:inputType="textPassword" />
-
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtUN"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword" />
 
     <LinearLayout
         android:id="@+id/layout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/layout2"
+        android:layout_below="@+id/edtPW"
         android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true">
 
@@ -112,14 +82,5 @@
             android:layout_marginLeft="20dp"/>
 
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/user"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvTitle"
-        android:layout_alignStart="@+id/tvTitle"
-        android:layout_below="@+id/layout3"
-        android:layout_marginTop="35dp" />
 
 </RelativeLayout>

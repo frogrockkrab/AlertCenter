@@ -34,7 +34,7 @@ public class Feed extends Fragment {
         getData();
         recyclerView.setAdapter(feed_adapter);
 
-        /*ListView lv = (ListView)rootView.findViewById(R.id.listview);
+        /*ListView lv = (ListView)rootView.findViewById(R.id.setting);
         String[] clubList = {"Arsenal", "Chelsea", "Everton","Liverpool", "Man City", "Man Utd", "Spurs" };
         ArrayAdapter<String> a = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,clubList);
         lv.setAdapter(a);*/

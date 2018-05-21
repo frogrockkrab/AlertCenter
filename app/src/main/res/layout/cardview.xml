@@ -28,7 +28,8 @@
             app:layout_constraintBottom_toTopOf="@+id/txtDescription"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.175" />
+            app:layout_constraintVertical_bias="0.175"
+            android:layout_marginLeft="16dp" />
 
         <TextView
             android:id="@+id/txtDescription"
@@ -38,7 +39,8 @@
             android:layout_marginStart="24dp"
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="24dp" />
 
         <ImageView
             android:id="@+id/imageView"

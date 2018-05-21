@@ -34,11 +34,10 @@ public class MainActivity extends AppCompatActivity {
     Intent home;
     int returnCode ;
     String returnMsg,str;
-    TextView txt1;
     SharedPreferences pref;
     SharedPreferences.Editor editor;
     //private static final String url = "http://192.168.1.34/AlertCenter/Login_test.php";
-    private static final String url = "http://192.168.0.102/AlertCenter/Login.php";
+    private static final String url = "http://192.168.0.103/AlertCenter/Login.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         edtUser = (EditText) findViewById(R.id.edtUN);
         edtPW = (EditText) findViewById(R.id.edtPW);
         btnLogin = (Button)findViewById(R.id.btnLogin);
-        txt1 = (TextView)findViewById(R.id.user);
         home = new Intent(this,Home.class);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
         pref = getSharedPreferences("login",MODE_PRIVATE);
         editor = pref.edit();
         str = pref.getString("user","noreccrd");
-        txt1.setText(str);
         checkPref();
     }
 
