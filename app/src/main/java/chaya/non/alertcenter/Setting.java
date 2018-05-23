@@ -1,6 +1,7 @@
 package chaya.non.alertcenter;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,14 +22,23 @@ import java.util.List;
 
 public class Setting extends Fragment implements AdapterView.OnItemClickListener {
     List<Data_Setting> data = new ArrayList<>();
+    ListView lv;
+    ListAdapter adt;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        data.add(new Data_Setting("Profile picture",R.mipmap.ic_launcher));
+        data.add(new Data_Setting("Font Size",R.mipmap.ic_launcher));
+        data.add(new Data_Setting("Logout",R.mipmap.ic_launcher));
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_setting,container,false);
-        data.add(new Data_Setting("Profile picture",R.mipmap.ic_launcher));
-        data.add(new Data_Setting("Font size",R.mipmap.ic_launcher_round));
-        data.add(new Data_Setting("Logout",R.mipmap.ic_launcher));
-        ListView lv = (ListView) rootView.findViewById(R.id.listview);
-        ListAdapter adt = new ListAdapter(getContext(),data);
+        lv = (ListView) rootView.findViewById(R.id.listview);
+        adt = new ListAdapter(getContext(),data);
+
         lv.setAdapter(adt);
         lv.setOnItemClickListener(this);
         return rootView;

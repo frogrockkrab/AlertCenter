@@ -9,4 +9,5 @@
     <string name="date_fomat">DD-MM-YY</string>
     <string name="select">select</string>
     <string name="submit">Submit</string>
+    <string name="todo">TODO</string>
 </resources>

@@ -20,9 +20,12 @@ public class PageAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
+                Post tab0 = new Post();
+                return tab0;
+            case 1:
                 Feed tab1 = new Feed();
                 return tab1;
-            case 1:
+            case 2:
                 Setting tab2 = new Setting();
                 return tab2;
             default:

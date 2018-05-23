@@ -1,5 +1,6 @@
 package chaya.non.alertcenter;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,9 +18,11 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -37,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences pref;
     SharedPreferences.Editor editor;
     //private static final String url = "http://192.168.1.34/AlertCenter/Login_test.php";
-    private static final String url = "http://192.168.0.103/AlertCenter/Login.php";
+    private static final String url = "http://192.168.0.102/AlertCenter/Login.php";
+    @SuppressLint("CommitPrefEdits")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,11 +53,6 @@ public class MainActivity extends AppCompatActivity {
         btnLogin = (Button)findViewById(R.id.btnLogin);
         home = new Intent(this,Home.class);
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                submit();
-            }
-        });
         pref = getSharedPreferences("login",MODE_PRIVATE);
         editor = pref.edit();
         str = pref.getString("user","noreccrd");
@@ -61,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkPref() {
-        if(str != "noreccrd"){
+        if(!str.equals("noreccrd")){
             startActivity(home);
             finish();
         }
@@ -72,26 +71,31 @@ public class MainActivity extends AppCompatActivity {
         startActivity(regis);
     }
 
-    public void submit() {
+    public void submit(View view) {
         username=edtUser.getText().toString();
         password=edtPW.getText().toString();
-        pDialog = new ProgressDialog(this);
-        pDialog.setMessage("Logged in");
-        pDialog.show();
+
         if(!username.isEmpty() && !password.isEmpty()){
+            pDialog = new ProgressDialog(this);
+            pDialog.setMessage("Logged in");
+            pDialog.show();
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         pDialog.hide();
                         try{
-                            JSONObject object = new JSONObject(response);
+                            JSONObject object = new JSONObject(response) ;
                             returnCode = object.getInt("code");
                             returnMsg = object.getString("return");
-                            if (returnCode == 1){
+                            if (returnCode == 0){
+                                Toast.makeText(MainActivity.this,returnMsg, Toast.LENGTH_SHORT).show();
+                            }
+                            else {
                                 sharedPref();
                                 startActivity(home);
                                 finish();
+                                Toast.makeText(MainActivity.this,"Login Successful", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -101,12 +105,12 @@ public class MainActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(MainActivity.this, "Error Response "+error, Toast.LENGTH_SHORT).show();
                         pDialog.hide();
+                        Toast.makeText(MainActivity.this, "Error Response ", Toast.LENGTH_SHORT).show();
                     }
                 }) {
                     @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
+                protected Map<String, String> getParams()  {
                     Map<String, String> params = new HashMap<>();
                     params.put("Email", username);
                     params.put("Password", password);
@@ -115,12 +119,12 @@ public class MainActivity extends AppCompatActivity {
             };
             RequestQueue queue = Volley.newRequestQueue(this);
             queue.add(stringRequest);
+            pDialog.dismiss();
         }
         else Toast.makeText(MainActivity.this, "Press input Username or Password", Toast.LENGTH_SHORT).show();
     }
 
     private void sharedPref() {
-        Toast.makeText(MainActivity.this, "Error Response "+returnMsg, Toast.LENGTH_SHORT).show();
         editor = editor.putString("user",returnMsg);
         editor.commit();
     }
